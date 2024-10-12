@@ -25,7 +25,7 @@ var Cafe = {
         ) {
             Cafe.isClosed = true;
             $("body").addClass("closed");
-            Cafe.showStatus("You are unable to view this site. Contact admin for more info.");
+            Cafe.showStatus("Closed for you.");
             return;
         }
         $(".js-item-lottie").on("click", Cafe.eLottieClicked);
