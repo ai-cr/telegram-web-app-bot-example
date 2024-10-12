@@ -272,6 +272,7 @@ var Cafe = {
         Cafe.updateTotalPrice();
     },
     mainBtnClicked: function () {
+        console.log("!!!! MAIN BUTTON CLICKED !!!!")
         if (!Cafe.canPay || Cafe.isLoading || Cafe.isClosed) {
             return false;
         }
