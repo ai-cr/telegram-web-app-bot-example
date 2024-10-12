@@ -403,6 +403,10 @@
         <canvas id="graphCanvas"></canvas>
 </div>
 
+<div>
+    <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
+</div>
+
 <section id="top_sect" class="second">
     <button id="main_btn" onclick="DemoApp.sendMessage('');">Send «Hello, World!!»</button>
     <button id="with_webview_btn" onclick="DemoApp.sendMessage('', true);">Send «Hello, World!» with inline webview button</button>
@@ -1159,6 +1163,7 @@
             // DISABLE BACKEND FOR FRONTEND DEMO
             // YOU CAN USE YOUR OWN REQUESTS TO YOUR OWN BACKEND
             // CHANGE THIS CODE TO YOUR OWN
+
             return onCallback && onCallback({error: 'This function (' + method + ') should send requests to your backend. Please, change this code to your own.'});
 
             const authData = DemoApp.initData || '';
