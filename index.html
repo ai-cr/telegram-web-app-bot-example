@@ -952,7 +952,13 @@
     <p>Test links HEREEEE!! 1122334455667788:</p>
 
     <div>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Say Hello</button>
+        <script>
+            function testHelloWorld() {
+                Telegram.WebApp.showAlert('Hello World!');
+            }
+            
+        </script>
+        <button onclick="testHelloWorld();">Say Hello</button>
     </div>
 
     <ul>
