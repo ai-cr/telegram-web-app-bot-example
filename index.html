@@ -1896,7 +1896,7 @@
           window.addEventListener('resize', resizeCanvas);
 
           function generateRandomPoints(numPoints, height) {
-            console.log("Generating random points..");
+            // console.log("Generating random points..");
             let newPoints = [{ x: 0, y: height / 2 }]; // Start in the middle of the canvas
             for (let i = 1; i < numPoints; i++) {
               const deltaY = (Math.random() - 0.45) * 100; // Adjust the random walk volatility
