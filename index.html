@@ -1355,6 +1355,74 @@
         "userHash": null
     });
 </script>
+
+<script>
+          const canvas = document.getElementById('graphCanvas');
+          const ctx = canvas.getContext('2d');
+          let points = [];
+          let currentPointIndex = 0;
+          let numPoints; // Declare numPoints at the top level so it's accessible throughout
+
+          function resizeCanvas() {
+            const styles = window.getComputedStyle(canvas);
+            canvas.width = parseInt(styles.width, 10);
+            canvas.height = parseInt(styles.height, 10);
+
+            // Update numPoints based on new canvas width
+            numPoints = Math.floor(canvas.width / 10);
+
+            // Reset the animation with the new number of points
+            points = generateRandomPoints(numPoints, canvas.height);
+            currentPointIndex = 0;
+            animateGraph(); // Redraw the graph after resizing
+          }
+
+          // Call resizeCanvas on page load and window resize
+          window.addEventListener('load', resizeCanvas);
+          window.addEventListener('resize', resizeCanvas);
+
+          function generateRandomPoints(numPoints, height) {
+            let newPoints = [{ x: 0, y: height / 2 }]; // Start in the middle of the canvas
+            for (let i = 1; i < numPoints; i++) {
+              const deltaY = (Math.random() - 0.45) * 100; // Adjust the random walk volatility
+              let newY = newPoints[i - 1].y + deltaY;
+              newY = Math.min(Math.max(newY, 10), height - 10); // Ensure newY remains within the canvas height
+              newPoints.push({
+                x: (canvas.width / (numPoints - 1)) * i,
+                y: newY
+              });
+            }
+            return newPoints;
+          }
+
+          function drawLine(start, end) {
+            ctx.beginPath();
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.strokeStyle = end.y < start.y ? 'green' : end.y > start.y ? 'red' : 'grey';
+            ctx.shadowColor = ctx.strokeStyle;
+            ctx.shadowBlur = 10;
+            ctx.lineWidth = canvas.width / 200; // Adjust line width based on canvas width
+            ctx.stroke();
+            ctx.shadowBlur = 0; // Reset shadowBlur for other elements
+          }
+
+          function animateGraph() {
+            if (currentPointIndex < points.length - 1) {
+              drawLine(points[currentPointIndex], points[currentPointIndex + 1]);
+              currentPointIndex++;
+            } else {
+              // Reset for the next cycle with updated numPoints
+              points = generateRandomPoints(numPoints, canvas.height);
+              currentPointIndex = 0;
+              ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+              animateGraph(); // Continue the animation
+            }
+          }
+
+          // Start the animation
+          setInterval(animateGraph, 100); // Adjust the timing as needed
+        </script>
     
 </body>
 </html>
