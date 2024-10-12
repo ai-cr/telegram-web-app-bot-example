@@ -540,7 +540,7 @@
             Telegram.WebApp.ready()
             Telegram.WebApp.MainButton.setParams({
                 text      : 'CLOSE WEBVIEW',
-                is_visible: true
+                is_visible: false
             }).onClick(DemoApp.close)
             Telegram.WebApp.BackButton.onClick(function() {
                 DemoApp.showAlert('Back button pressed')
