@@ -398,6 +398,17 @@
 
 <body class="">
 
+    <script>
+        if (DemoApp.BackButton.isVisible) {
+                // DemoApp.BackButton.hide();
+                DemoApp.showAlert('backbutton isvisible');
+
+            } else {
+                DemoApp.BackButton.show();
+                DemoApp.showAlert('showing backbutton');
+        }
+    </script>
+
     <div class="canvas-container">
             <img src="#" alt="Watermark" class="watermark">
             <canvas id="graphCanvas"></canvas>
