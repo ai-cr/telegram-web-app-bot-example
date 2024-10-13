@@ -428,6 +428,7 @@ const DemoApp = {
             is_visible: false
         }).onClick(DemoApp.close)
         Telegram.WebApp.BackButton.onClick(function() {
+            alert("back pressed");
             DemoApp.showAlert('Back button pressed')
         })
         Telegram.WebApp.SettingsButton.onClick(function() {
